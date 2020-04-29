@@ -93,8 +93,15 @@ export class AuthService {
       return false;
     }
     const expira = Number(localStorage.getItem('expira'));
+    const expiraDate = new Date();
+    expiraDate.setTime(expira);
 
-    return this.userToken.length > 2;
+    if ( expiraDate > new Date() ){
+      return true;
+    } else {
+      return false;
+    }
+
   } 
 
 }
